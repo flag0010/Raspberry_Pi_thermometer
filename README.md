@@ -9,6 +9,12 @@ Where # in load_#m, indicates the appropriate ave. load over the last # min from
 
 Then I put this function into a python 2.7 script called `rasp.pi.cpu.thermom.temp.monintor.py`, which uses it to guess the temp every hr, email you a 24 hr report, and email you a warning every hr if the temp is below 10 C (50 F). The email set up is explained below.
 
+You run it as follows:
+
+`python rasp.pi.cpu.thermom.temp.monintor.py xxxusernamexxx@gmail.com xxxmypasswordxxx`
+
+Where you need to enter your gmail address and password (see below for password detail, it's not the same one you use to check your gmail)
+
 Basically, if you have a Raspberry Pi 3B (and they're only $35), you can use it to do a monitor your house temp while you are away and send you warnings if it gets really cold. 
 
 EMAIL SETUP
