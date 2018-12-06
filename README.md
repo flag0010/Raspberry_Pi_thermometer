@@ -4,6 +4,7 @@ Hacking a Raspberry Pi 3B to send estimate and send notifications about house te
 When I leave my home empty in the winter I always worry my furnace will die, causing my house to freeze (broken pipes/water damage). Commercial wifi based temperature notification systems are available (e.g. Nest), but all I've seen cost >$50. I wondered if I could do a decent job of estimating ambient temperature using the CPU thermometer built into my raspberry pi and a little stats.  So I trained a linear model, that used CPU temp and CPU load (from `uptime` command), to estimate the real ambient temp (which I got from a USB thermometer).  It works pretty well.  Here's the model:
 
 Ambient temp (in C) = -18.243 + CPU_temp * 0.902 + load_1m * -4.173 + load_5m * -6.925 + load_15m * -2.423 
+
 Where # in load_#m, indicates the appropriate ave. load over the last # min from `uptime`. In my testing this method is within about 2 C 95% of the time.
 
 Then I put this function into a python 2.7 script called `rasp.pi.cpu.thermom.temp.monintor.py`, which uses it to guess the temp every hr, email you a 24 hr report, and email you a warning every hr if the temp is below 10 C (50 F). The email set up is explained below.
