@@ -7,7 +7,7 @@ you need to install a temper USB monitor. i found a cmd named hid-query that doe
 
 possibly the binary `hid-query` in this repo will work. i think it also needs hidapi (https://github.com/signal11/hidapi)
 
-anyway, the bash command `usb_temp` runs hid-query and ask the thermometer for temp in some hex blob and returns it in degrees C, a al:
+anyway, the bash command `usb_temp` runs hid-query and ask the thermometer for temp in some hex blob and returns it in degrees C, a la:
 
 ```
 ./usb_temp
