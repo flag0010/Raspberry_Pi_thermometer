@@ -17,7 +17,9 @@ anyway, the bash command `usb_temp` runs hid-query and ask the thermometer for t
 that's the basics. 
 
 here are two python3 scripts (require python3.9 or newer). 
+
 `ntfy.USB.therm.temp.mon.py`
+
 `ntfy.control.listener.py`
 
 for both you need to edit the `TOPIC` var in the script to set a ntfy.sh topic, something like `my-home-temp-d15a0114-852a-476d-85df-7fd5fe21e322` so it's semi private as anyone with the url can find it
