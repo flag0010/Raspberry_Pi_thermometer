@@ -1,0 +1,2 @@
+tempc=$(usb_temp)
+printf "%.2f\n" $(echo "${tempc} * (9/5) +32" | bc -l)
