@@ -189,7 +189,7 @@ if __name__ == "__main__":
     elif mode == "test":
         post_ntfy("Pi test", "This is a test from the Pi.", priority=5)
     else:
-        print("Usage: script.py [collect|boot|test]")
+        print("Usage: script.py [collect|boot|test|report]")
 
 
 
