@@ -1,4 +1,3 @@
-#!/usr/bin/env python3.9
 import os, time, datetime, subprocess, sys, statistics
 from zoneinfo import ZoneInfo
 
@@ -181,15 +180,16 @@ if __name__ == "__main__":
     elif mode == "report":
         f, err = read_ftemp_with_retries()
         if f is not None:
-            post_ntfy("Instant Report", f"{now_pretty()}\nCurrent Temp: {f:.1f}°F", priority=3)
+            post_ntfy(
+                "Instant Report", f"{now_pretty()}\nCurrent Temp: {f:.1f}°F", priority=3
+            )
         else:
-            post_ntfy("Instant Report Failed", f"Could not read sensor.\n{err}", priority=4)
+            post_ntfy(
+                "Instant Report Failed", f"Could not read sensor.\n{err}", priority=4
+            )
     elif mode == "boot":
         boot()
     elif mode == "test":
         post_ntfy("Pi test", "This is a test from the Pi.", priority=5)
     else:
         print("Usage: script.py [collect|boot|test|report]")
-
-
-

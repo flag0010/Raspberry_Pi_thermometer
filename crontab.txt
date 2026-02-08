@@ -21,17 +21,17 @@
 # 
 # m h  dom mon dow   command
 SHELL=/bin/bash
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
 # optional: where to send cron's stdout/stderr as mail (leave empty to disable)
 # MAILTO=""
 
 # Boot: send a "Pi boot OK" test push and take an initial reading.
-@reboot sleep 30 && /usr/local/bin/python3.9 /home/pi/Desktop/temp_monitor/ntfy.USB.therm.temp.mon.py boot >> /home/pi/home_temp.log 2>&1 && /usr/local/bin/lights_off 
+@reboot sleep 30 && /usr/bin/python3 /home/pi/Desktop/temp_monitor/ntfy.USB.therm.temp.mon.py boot >> /home/home_temp.cron.log 2>&1 
 
 # Listener: Runs always, logs errors to a separate file.
-# We use 'python3.9 -u' to ensure logs write instantly.
-@reboot sleep 40 && /usr/local/bin/python3.9 -u /home/pi/Desktop/temp_monitor/ntfy.control.listener.py >> /home/pi/listener.log 2>&1
+# We use 'python3 -u' to ensure logs write instantly.
+@reboot sleep 40 && /usr/bin/python3 -u /home/pi/Desktop/temp_monitor/ntfy.control.listener.py >> /home/listener.cron.log 2>&1
 
 # Hourly: read sensor, log, maybe low-temp alert, and send daily summary every 24h since boot.
-0 * * * * /usr/local/bin/python3.9 /home/pi/Desktop/temp_monitor/ntfy.USB.therm.temp.mon.py collect >> /home/pi/home_temp.log 2>&1
+0 * * * * /usr/bin/python3 /home/pi/Desktop/temp_monitor/ntfy.USB.therm.temp.mon.py collect >> /home/home_temp.cron.log 2>&1
 
